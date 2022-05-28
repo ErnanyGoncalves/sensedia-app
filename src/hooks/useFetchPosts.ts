@@ -1,21 +1,24 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import usePostStore from "./usePostStore";
 
-export const useFetchPosts = (currentPage: number | string, viewMode: string, searchText: string, orderBy: string) => {
+export const useFetchPosts = (currentPage: number, viewMode: string, searchText: string, orderBy: string) => {
+    const setTotalPages = usePostStore(state=>state.setTotalPages);
+    const setTotalResults = usePostStore(state=>state.setTotalResults);
+
     const [postsList, setPostsList] = useState(null);
-    const [totalPages, setTotalPages] = useState(0);
-    const [totalResults, setTotalResults] = useState(0);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const limit = viewMode === "list" ? 10 : 8;
-        const url = `https://jsonplaceholder.typicode.com/posts?_page=${currentPage}&_limit=${limit}&title_like=${searchText}&_sort=title&_order=${orderBy}`;
+        const orderByTitle = orderBy ? `&_sort=title&_order=${orderBy}` : ``;
+        const url = `https://jsonplaceholder.typicode.com/posts?_page=${currentPage}&_limit=${limit}&title_like=${searchText}${orderByTitle}`;
         setLoading(true);
         axios.get(url)
-            .then(({ data, headers }: any) => {
+            .then(({ data, headers }: any) => {            
                 setTotalPages(Math.ceil(headers["x-total-count"] / limit));
-                setTotalPages(headers["x-total-count"]);
+                setTotalResults(headers["x-total-count"]);
                 setPostsList(data);
                 setLoading(false);
             })
@@ -25,5 +28,5 @@ export const useFetchPosts = (currentPage: number | string, viewMode: string, se
             });
     }, [currentPage, viewMode, searchText, orderBy]);
 
-    return { postsList, error, loading, totalPages, totalResults }
+    return { postsList, error, loading }
 }

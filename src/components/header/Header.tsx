@@ -1,4 +1,5 @@
 import { AppBar, Container } from "@mui/material"
+import { purple } from "@mui/material/colors"
 import styled from "styled-components"
 
 const ImageWrapper = styled.div`
@@ -10,7 +11,7 @@ const ImageWrapper = styled.div`
 
 export const Header = () => {
     return (
-        <AppBar sx={{backgroundColor:"#5C21AA"}}>
+        <AppBar sx={{backgroundColor:purple[900]}}>
             <Container maxWidth="xl">
                 <ImageWrapper>
                     <img src="src/assets/logos/sensedia_white_logo.svg" alt="Sensedia Logo (White)" />
