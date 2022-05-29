@@ -2,6 +2,7 @@
   "name": "sensedia-app",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://ernanygoncalves.github.io/sensedia-app",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
