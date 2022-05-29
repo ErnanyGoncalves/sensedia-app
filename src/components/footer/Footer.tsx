@@ -1,4 +1,4 @@
-import { Box, Pagination, PaginationItem, Typography } from '@mui/material'
+import { Box, Pagination, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 import { purple } from '@mui/material/colors';
 import usePostStore from '../../hooks/usePostStore'

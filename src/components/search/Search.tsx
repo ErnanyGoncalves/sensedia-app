@@ -35,6 +35,7 @@ export const Search = () => {
     const manageClear = () => {     
         setText("");
         setSearchText("");
+        setCurrentPage(1);
         setOrderBy("");
     }
     
