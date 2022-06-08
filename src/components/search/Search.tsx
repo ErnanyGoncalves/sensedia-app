@@ -62,7 +62,7 @@ export const Search = () => {
                         <MenuItem value={"card"}><ViewComfy sx={{ mr: 1 }} /> Card View</MenuItem>
                     </Select>
                 </FormControl>
-                <Button type="submit" variant="contained" sx={{ backgroundColor: purple[900], fontSize: 16, borderRadius: 50, p: 2, width: 150 }}><SearchIcon sx={{ mr: 1 }} /> SEARCH</Button>
+                <Button data-testid="searchBtn" type="submit" variant="contained" sx={{ backgroundColor: purple[900], fontSize: 16, borderRadius: 50, p: 2, width: 150 }}><SearchIcon sx={{ mr: 1 }} /> SEARCH</Button>
                 <Button type="button" onClick={manageClear} variant="text" sx={{ color: purple[900], fontSize: 16, borderRadius: 50, p: 2, width: 130 }}>CLEAR</Button>
             </SearchWrapper>
         </form>
