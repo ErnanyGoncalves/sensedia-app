@@ -12,7 +12,7 @@ const ImageWrapper = styled.div`
 export const Header = () => {
     return (
         <AppBar sx={{backgroundColor:purple[900]}}>
-            <Container maxWidth="xl">
+            <Container data-testid="header" maxWidth="xl">
                 <ImageWrapper>
                     <img src="src/assets/logos/sensedia_white_logo.svg" alt="Sensedia Logo (White)" />
                 </ImageWrapper>
