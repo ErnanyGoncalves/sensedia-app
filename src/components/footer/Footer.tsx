@@ -1,23 +1,12 @@
 import { Box, Pagination, Typography } from '@mui/material'
-import { makeStyles } from '@mui/styles';
 import { purple } from '@mui/material/colors';
 import usePostStore from '../../hooks/usePostStore'
-
-const useStyles = makeStyles(() => ({
-  ul: {
-    "& .Mui-selected": {
-      backgroundColor: purple[900],
-      color: "white"
-    }
-  }
-}));
 
 export const Footer = () => {
   const page = usePostStore(state => state.currentPage);
   const results = usePostStore(state => state.totalResults);
   const pages = usePostStore(state => state.totalPages);
   const setCurrentPage = usePostStore(state => state.setCurrentPage);
-  const classes = useStyles();
   const handleChange = (ev: object, page: number) => {
     setCurrentPage(page);
   }
@@ -27,7 +16,12 @@ export const Footer = () => {
       <Typography sx={{ fontSize: 16, fontWeight: 500 }} color="text.secondary" component="div">
         TOTAL RESULTS {results}
       </Typography>
-      <Pagination page={page} classes={{ ul: classes.ul }} onChange={handleChange} count={pages} />
+      <Pagination page={page} sx={{
+        "& .Mui-selected": {
+          backgroundColor: `${purple[900]} !important`,
+          color: "white"
+        }
+      }} onChange={handleChange} count={pages} />
     </Box>
   )
 }
